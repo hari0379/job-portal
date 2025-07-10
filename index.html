@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerConnect - Find Your Dream Job</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><span>Career</span>Connect</h1>
+                <p>Find your dream job today</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#jobs">Jobs</a></li>
+                    <li><a href="#companies">Companies</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn btn-login">Login</button>
+                <button class="btn btn-register">Register</button>
+            </div>
+        </div>
+    </header>
+   
+<div class="auth-modal" id="loginModal">
+    <div class="auth-container">
+        <button class="close-modal">&times;</button>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <p class="auth-toggle">Don't have an account? <a href="#" id="showRegister">Register</a></p>
+            <p class="auth-toggle">Are you an employer? <a href="#" id="showEmployerRegister">Register as Employer</a></p>
+        </form>
+    </div>
+</div>
+
+<div class="auth-modal" id="registerModal">
+    <div class="auth-container">
+        <button class="close-modal">&times;</button>
+        <h2>Register as Job Seeker</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="registerName">Full Name</label>
+                <input type="text" id="registerName" required>
+            </div>
+            <div class="form-group">
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Password</label>
+                <input type="password" id="registerPassword" required minlength="6">
+            </div>
+            <div class="form-group">
+                <label for="registerConfirmPassword">Confirm Password</label>
+                <input type="password" id="registerConfirmPassword" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+            <p class="auth-toggle">Already have an account? <a href="#" id="showLogin">Login</a></p>
+        </form>
+    </div>
+</div>
+
+<div class="auth-modal" id="employerRegisterModal">
+    <div class="auth-container">
+        <button class="close-modal">&times;</button>
+        <h2>Register as Employer</h2>
+        <form id="employerRegisterForm">
+            <div class="form-group">
+                <label for="employerName">Company Name</label>
+                <input type="text" id="employerName" required>
+            </div>
+            <div class="form-group">
+                <label for="employerEmail">Email</label>
+                <input type="email" id="employerEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="employerPassword">Password</label>
+                <input type="password" id="employerPassword" required minlength="6">
+            </div>
+            <div class="form-group">
+                <label for="employerConfirmPassword">Confirm Password</label>
+                <input type="password" id="employerConfirmPassword" required>
+            </div>
+            <div class="form-group">
+                <label for="employerWebsite">Company Website</label>
+                <input type="url" id="employerWebsite">
+            </div>
+            <button type="submit" class="btn btn-primary">Register Company</button>
+            <p class="auth-toggle">Already have an account? <a href="#" id="showEmployerLogin">Login</a></p>
+        </form>
+    </div>
+</div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Find Your <span>Dream Job</span> Today</h1>
+                <p>Thousands of jobs available. Find yours now.</p>
+                <div class="search-box">
+                    <div class="search-input">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Job title, keywords, or company">
+                    </div>
+                    <div class="search-input">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" id="locationSearch" placeholder="Location">
+                    </div>
+                    <button class="btn btn-search" id="searchButton">Search Jobs</button>
+                </div>
+                <div class="popular-tags">
+                    <span>Popular Searches:</span>
+                    <a href="#"  class="popular-search" data-keyword="developer">Developer</a>
+                    <a href="#"  class="popular-search" data-keyword="designer">Designer</a>
+                    <a href="#"  class="popular-search" data-keyword="marketing">Marketing</a>
+                    <a href="#"  class="popular-search" data-keyword="remote">Remote</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="People working">
+            </div>
+        </div>
+    </section>
+<section class="job-filters">
+    <div class="container">
+        <div class="filters-container">
+            <div class="filter-group">
+                <label for="jobTypeFilter"><i class="fas fa-briefcase"></i> Job Type</label>
+                <select id="jobTypeFilter">
+                    <option value="">All Types</option>
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Contract">Contract</option>
+                    <option value="Internship">Internship</option>
+                    <option value="Remote">Remote</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="experienceFilter"><i class="fas fa-chart-line"></i> Experience</label>
+                <select id="experienceFilter">
+                    <option value="">All Levels</option>
+                    <option value="Entry">Entry Level</option>
+                    <option value="Mid">Mid Level</option>
+                    <option value="Senior">Senior</option>
+                    <option value="Executive">Executive</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="salaryFilter"><i class="fas fa-dollar-sign"></i> Salary Range</label>
+                <select id="salaryFilter">
+                    <option value="">All Ranges</option>
+                    <option value="0-50000">$0 - $50,000</option>
+                    <option value="50000-80000">$50,000 - $80,000</option>
+                    <option value="80000-100000">$80,000 - $100,000</option>
+                    <option value="100000+">$100,000+</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="datePostedFilter"><i class="far fa-clock"></i> Date Posted</label>
+                <select id="datePostedFilter">
+                    <option value="">Anytime</option>
+                    <option value="1">Last 24 hours</option>
+                    <option value="7">Last week</option>
+                    <option value="30">Last month</option>
+                </select>
+            </div>
+            <button class="btn btn-clear" id="clearFilters">Clear All</button>
+        </div>
+    </div>
+</section>
+
+    <section class="categories" id="jobs">
+        <div class="container">
+            <h2>Browse Jobs by Category</h2>
+            <p>Find the job that fits your skills and interests</p>
+            <div class="category-grid">
+                <div class="category-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Technology</h3>
+                    <p>1,240 Jobs Available</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Business</h3>
+                    <p>856 Jobs Available</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Design</h3>
+                    <p>723 Jobs Available</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Marketing</h3>
+                    <p>642 Jobs Available</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Healthcare</h3>
+                    <p>1,532 Jobs Available</p>
+                </div>
+                <div class="category-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Education</h3>
+                    <p>421 Jobs Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-jobs">
+        <div class="container">
+            <div class="section-header"></div>
+            <h2  id="searchResultsTitle">Featured Jobs</h2>
+             <div class="sort-options">
+                <label for="sortBy">Sort by:</label>
+                <select id="sortBy">
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                    <option value="salary-high">Salary (High to Low)</option>
+                    <option value="salary-low">Salary (Low to High)</option>
+                    <option value="relevance">Relevance</option>
+                </select>
+            </div>
+            <p>Hand-picked opportunities for you</p>
+            <div class="job-listings" id="jobListings">
+                <!-- Job listings will be populated by JavaScript -->
+            </div>
+             <div class="pagination" id="pagination">
+            <!-- Pagination will be added here -->
+        </div>
+            <button class="btn btn-view-all">View All Jobs</button>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>Success Stories</h2>
+            <p>What our users say about us</p>
+            <div class="testimonial-slider">
+                <div class="testimonial active">
+                    <div class="quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>CareerConnect helped me find my dream job in just two weeks! The platform is easy to use and had many relevant listings.</p>
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson">
+                        <h4>Sarah Johnson</h4>
+                        <p>UX Designer at TechCorp</p>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>As a recruiter, I've found CareerConnect to be the best platform for finding qualified candidates quickly and efficiently.</p>
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                        <h4>Michael Chen</h4>
+                        <p>HR Manager at Innovate Inc.</p>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="quote">
+                        <i class="fas fa-quote-left"></i>
+                        <p>After months of searching, CareerConnect connected me with a remote position that perfectly matches my skills and lifestyle.</p>
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <div class="author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma Rodriguez">
+                        <h4>Emma Rodriguez</h4>
+                        <p>Full Stack Developer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to take the next step in your career?</h2>
+                <p>Create a free account and get matched with your perfect job</p>
+                <button class="btn btn-cta">Get Started - It's Free</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>CareerConnect</h3>
+                    <p>Connecting talent with opportunity since 2023. Our mission is to make job searching and hiring simple and effective.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>For Job Seekers</h4>
+                    <ul>
+                        <li><a href="#">Browse Jobs</a></li>
+                        <li><a href="#">Create Profile</a></li>
+                        <li><a href="#">Job Alerts</a></li>
+                        <li><a href="#">Career Advice</a></li>
+                        <li><a href="#">Resume Builder</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>For Employers</h4>
+                    <ul>
+                        <li><a href="#">Post a Job</a></li>
+                        <li><a href="#">Browse Candidates</a></li>
+                        <li><a href="#">Pricing Plans</a></li>
+                        <li><a href="#">Recruitment Solutions</a></li>
+                        <li><a href="#">Employer Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CareerConnect. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+<!-- Add this section for the enhanced employer dashboard -->
+<section class="employer-dashboard" id="employerDashboard" style="display: none;">
+    <div class="container">
+        <div class="dashboard-header">
+            <h2><i class="fas fa-tachometer-alt"></i> Employer Dashboard</h2>
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalJobs">0</div>
+                    <div class="stat-label">Total Jobs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="activeJobs">0</div>
+                    <div class="stat-label">Active Jobs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalApplications">0</div>
+                    <div class="stat-label">Applications</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-actions">
+            <button class="btn btn-primary" id="postJobBtn">
+                <i class="fas fa-plus"></i> Post New Job
+            </button>
+            <div class="view-options">
+                <button class="btn btn-view-option active" data-view="all">All Jobs</button>
+                <button class="btn btn-view-option" data-view="active">Active</button>
+                <button class="btn btn-view-option" data-view="filled">Filled</button>
+                <button class="btn btn-view-option" data-view="draft">Drafts</button>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="dashboard-main">
+                <div class="dashboard-table">
+                    <div class="table-header">
+                        <div class="table-row">
+                            <div class="table-col" data-col="title">Job Title</div>
+                            <div class="table-col" data-col="applications">Applications</div>
+                            <div class="table-col" data-col="posted">Date Posted</div>
+                            <div class="table-col" data-col="status">Status</div>
+                            <div class="table-col" data-col="actions">Actions</div>
+                        </div>
+                    </div>
+                    <div class="table-body" id="employerJobsTable">
+                        <!-- Jobs will be populated here -->
+                    </div>
+                </div>
+                <div class="dashboard-pagination" id="dashboardPagination">
+                    <!-- Pagination will be added here -->
+                </div>
+            </div>
+            
+            <div class="dashboard-sidebar">
+                <div class="sidebar-card">
+                    <h3><i class="fas fa-chart-line"></i> Recent Activity</h3>
+                    <div class="activity-feed" id="activityFeed">
+                        <!-- Activity items will be added here -->
+                    </div>
+                </div>
+                <div class="sidebar-card">
+                    <h3><i class="fas fa-user-check"></i> Recent Applicants</h3>
+                    <div class="applicants-list" id="recentApplicants">
+                        <!-- Applicants will be added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add job details modal -->
+<div class="modal" id="jobDetailsModal">
+    <div class="modal-container">
+        <button class="close-modal">&times;</button>
+        <div class="modal-header">
+            <h2 id="jobModalTitle">Job Details</h2>
+            <div class="job-status-badge" id="jobStatusBadge">Active</div>
+        </div>
+        <div class="modal-body">
+            <div class="job-details-content">
+                <div class="job-details-main">
+                    <div class="detail-group">
+                        <h3>Job Description</h3>
+                        <div id="jobModalDescription"></div>
+                    </div>
+                    <div class="detail-group">
+                        <h3>Requirements</h3>
+                        <div id="jobModalRequirements"></div>
+                    </div>
+                    <div class="detail-group">
+                        <h3>Skills Required</h3>
+                        <div id="jobModalSkills"></div>
+                    </div>
+                </div>
+                <div class="job-details-sidebar">
+                    <div class="detail-card">
+                        <h4><i class="fas fa-info-circle"></i> Job Information</h4>
+                        <div class="detail-item">
+                            <span class="detail-label">Job Type:</span>
+                            <span id="jobModalType"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Location:</span>
+                            <span id="jobModalLocation"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Salary:</span>
+                            <span id="jobModalSalary"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Posted:</span>
+                            <span id="jobModalPosted"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Deadline:</span>
+                            <span id="jobModalDeadline"></span>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <h4><i class="fas fa-users"></i> Applications</h4>
+                        <div class="detail-item">
+                            <span class="detail-label">Total:</span>
+                            <span id="jobModalApplications"></span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">New:</span>
+                            <span id="jobModalNewApplications"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="applications-section" id="jobApplicationsSection">
+                <h3>Applications</h3>
+                <div class="application-filters">
+                    <select id="applicationStatusFilter">
+                        <option value="all">All Applications</option>
+                        <option value="new">New</option>
+                        <option value="reviewed">Reviewed</option>
+                        <option value="interview">Interview</option>
+                        <option value="hired">Hired</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                    <button class="btn btn-small" id="exportApplications">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+                <div class="applications-table">
+                    <div class="table-header">
+                        <div class="table-row">
+                            <div class="table-col">Applicant</div>
+                            <div class="table-col">Applied</div>
+                            <div class="table-col">Status</div>
+                            <div class="table-col">Actions</div>
+                        </div>
+                    </div>
+                    <div class="table-body" id="jobApplicationsTable">
+                        <!-- Applications will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" id="closeJobModal">Close</button>
+            <div class="footer-actions">
+                <button class="btn btn-status" id="markAsFilled" data-status="filled">
+                    <i class="fas fa-check-circle"></i> Mark as Filled
+                </button>
+                <button class="btn btn-status" id="markAsActive" data-status="active" style="display: none;">
+                    <i class="fas fa-redo"></i> Reactivate
+                </button>
+                <button class="btn btn-edit" id="editJobBtn">
+                    <i class="fas fa-edit"></i> Edit Job
+                </button>
+                <button class="btn btn-danger" id="deleteJobBtn">
+                    <i class="fas fa-trash"></i> Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
